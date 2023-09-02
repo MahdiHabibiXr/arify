@@ -3,3 +3,5 @@ celery
 redis
 lumaapi
 requests
+gunicorn
+pillow
