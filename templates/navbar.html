@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="{% url 'home' %}">ARify</a>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'create' %}">Create</a>
+          </li>
+
+          {% if request.user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'logout' %}">Logout</a>
+          </li>
+          {% endif %}
+          {% if not request.user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'login' %}">Login</a>
+          </li>
+          {% endif %}
+
+        </ul>
+        {%if request.user.is_authenticated %}
+        <p class="text-white nav-item m-2">You logged in as : <strong>{{request.user.username}}</strong></p>
+        <a class="text-white nav-link active m-2" aria-current="page" href="{% url 'me' %}">Profile</a>
+        {% endif %}
+        <!-- <form class="d-flex" role="search">
+          
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form> -->
+      </div>
+    </div>
+  </nav>

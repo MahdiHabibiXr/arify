@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %} {{title}} {% endblock %}
+
+{% block content %}
+<h3 class="mb-4">Your captures : </h3>
+
+<div class="card pt-3 pb-3">
+    <!-- <div class="d-grid gap-3"> -->
+        
+        {% if nerfs.count == 0 %}
+            <div class="card-body ms-3 me-3 bg-light border">
+                <h4>Your Contents will be here</h4>
+                <h4>To create new scan : <a class="link-opacity-100" href="{% url 'create' %}">Create new scan</a></strong></h4>
+            </div>
+        {% endif %}
+
+        <div class="container">
+            <div class="row">
+                <!-- <div class="col-sm"> -->
+                    {% for nerf in nerfs %}
+                        {% if nerf.0.status == True %}
+                            <!-- <div class="card-body ms-3 me-3 bg-light border">
+                                <strong><a class="link-opacity-100" href="{% url 'view' nerf.0.id %}">{{ nerf.title }}</a></strong>
+                            </div> -->
+
+                            <div class="card pt-2 m-3 mb-3 bg-light border mx-auto" style="width: 18rem;">
+                                <img class="card-img-top" src="{{ nerf.1.thumb.url }}" alt="Card image cap">
+                                <div class="card-body">
+                                <h5 class="card-title">{{ nerf.0.title }}</h5>
+                                <a href="{% url 'view' nerf.0.id %}" class="btn btn-success">View</a>
+                                </div>
+                            </div>
+                            
+                        {% endif %}
+
+                        {% if nerf.status == False %}
+                            <div class="card m-3 mb-3 bg-light border" style="width: 18rem;">
+                                <img class="card-img-top" src="https://img.freepik.com/premium-vector/system-software-update-upgrade-concept-loading-process-screen-vector-illustration_175838-2182.jpg?w=2000" alt="Card image cap">
+                                <div class="card-body">
+                                <h5 class="card-title">{{ nerf.0.title }}</h5>
+                                <a href="{% url 'view' nerf.0.id %}" class="btn btn-success">View</a>
+                                </div>
+                            </div>
+                        {% endif %}
+                    
+                    <!-- <div class="card-body ms-3 me-3 bg-light border">
+                        <strong><a class="link-opacity-100" href="{% url 'view' nerf.0.id %}">{{ nerf.title }}</a></strong>
+                    </div> -->
+                {% endfor %}
+                <!-- </div> -->
+            </div>
+        </div>
+{% endblock%}

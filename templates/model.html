@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %} {{title}} {% endblock %}
+    {% block head %}
+    <meta charset="utf-8">
+    <meta name="description" content="&lt;model-viewer&gt; template">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link type="text/css" href="http://127.0.0.1:5000/static/styles.css" rel="stylesheet"/>
+    {% endblock %}
+
+    {% block content %}
+    <!-- <model-viewer> HTML element -->
+    <model-viewer src="{{path}}" ar ar-modes="webxr scene-viewer quick-look" camera-controls poster="poster.webp" shadow-intensity="1">
+      <div class="progress-bar hide" slot="progress-bar">
+          <div class="update-bar"></div>
+      </div>
+      <button slot="ar-button" id="ar-button">
+          View in your space
+      </button>
+    </model-viewer>  
+    <script src="http://127.0.0.1:5000/static/script.js"></script>
+    <!-- Loads <model-viewer> for browsers: -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.0.1/model-viewer.min.js"></script>
+    {% endblock %}

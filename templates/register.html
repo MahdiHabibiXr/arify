@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{%block content %}
+    {% if request.user.is_authenticated %}
+
+    <h3>You are currently logged in</h3>
+    <h4>To create a new account you should logout!</h4>
+
+    {% else %}
+        <form action="" novalidate method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Register">
+        </form>
+    {% endif%}
+
+{% endblock %}

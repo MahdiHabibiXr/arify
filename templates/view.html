@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %} {{nerf.title}} {% endblock %}
+
+{% block head %}
+    <meta charset="utf-8">
+    <meta name="description" content="{{ nerf.title}} - ARify">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {% load static %}
+
+    <link type="text/css" href="{% static 'css/styles.css' %}" rel="stylesheet"/>
+
+{% endblock %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-body ">
+            
+            <a href="{% url 'home' %}" class="btn btn-primary">Back</a>
+            {% if request.user.id == nerf.user_id %}
+                <a href="{% url 'delete' nerf.id %}" class="btn btn-danger mb-10">Delete</a>
+            {% endif %}
+            
+            <!-- <a href="{% url 'edit' nerf.id %}" class="btn btn-primary mb-2 text-white">Edit</a> -->
+
+            <h3 class="mt-3">{{ title }}</h3>
+            <small>Date created: {{ nerf.called_at }} </small><br>
+            <small>Status: <strong>Completed</strong> </small>
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block modelviewer %}
+
+    <model-viewer src="{{ export.med_glb.url }}" ar ar-modes="webxr scene-viewer quick-look" camera-controls poster="{{ export.thumb.url }}" shadow-intensity="1" max-camera-orbit="auto 80deg auto">
+       
+        <!-- <video width="216" height="384" controls class="m-5">
+            <source src="{{video.url}}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video> -->
+        
+        <!-- <div class="progress-bar hide" slot="progress-bar">
+            <div class="update-bar"></div>
+        </div> -->
+        <!-- <button slot="ar-button" id="ar-button">
+            View in your space
+        </button> -->
+      </model-viewer>
+
+      <script src="{% static 'js/script.js' %}"></script>
+      <!-- Loads <model-viewer> for browsers: -->
+      <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.0.1/model-viewer.min.js"></script>
+{% endblock %}

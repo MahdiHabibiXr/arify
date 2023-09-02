@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %} Account Info {% endblock%}
+
+
+{%block content%}
+    <div class="m-3">
+        <h3>Weclome {{name}}</h3>
+        <br>
+
+        <p>Your notifcations will be sent to this email : <strong> {{request.user.email}} </strong></p>
+        <p>Credits : <strong>{{charge}}</strong> </p>
+        <strong> <a href="{% url 'create' %}" > Create scans</a> </strong> 
+    </div>
+
+{% endblock%}
