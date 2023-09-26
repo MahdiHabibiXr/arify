@@ -105,9 +105,9 @@ WSGI_APPLICATION = 'bazdidakhar.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'djangodatabase',
-        'USER': 'dbadmin',
-        'PASSWORD': '12345',
+        'NAME': 'arifyncp_db',
+        'USER': 'arifyncp_db',
+        'PASSWORD': 'bM[sIJH#7&gC',
         'HOST': 'localhost',
         'PORT': '3306',
     }
