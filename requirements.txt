@@ -5,4 +5,3 @@ lumaapi
 requests
 gunicorn
 pillow
-psycopg2
