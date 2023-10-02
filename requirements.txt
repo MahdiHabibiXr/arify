@@ -5,3 +5,4 @@ lumaapi
 requests
 gunicorn
 pillow
+mysqlclient
